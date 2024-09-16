@@ -9,7 +9,9 @@ export default function CTA() {
           Are you a landlord?
         </p>
         <p className="font-medium text-base leading-[160%] mb-8">
-          Discover ways to increase your home's value and get listed. No Spam.
+          {
+            "Discover ways to increase your home's value and get listed. No Spam."
+          }
         </p>
         <div className="flex flex-col sm:flex-row items-center mb-6 w-full md:w-[543px] sm:gap-6 gap-4 py-4 sm:bg-[#ffffff] sm:dark:bg-neutral-200 px-6">
           <input

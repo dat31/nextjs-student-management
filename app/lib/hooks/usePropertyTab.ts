@@ -1,16 +1,16 @@
+import { TransactionType } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { PropertyType } from "../definitions";
 
 export default function usePropertyTabs() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const [activeTab, setActiveTab] = useState(
-    () => searchParams.get("type") || PropertyType.RENT
+    () => searchParams.get("type") || TransactionType.RENT
   );
 
-  const onTabChange = (tab: PropertyType) => {
+  const onTabChange = (tab: TransactionType) => {
     const params = new URLSearchParams();
     if (tab === searchParams.get("type")) {
       return;
@@ -23,4 +23,8 @@ export default function usePropertyTabs() {
   return { onTabChange, activeTab };
 }
 
-export const tabs = [PropertyType.RENT, PropertyType.BUY, PropertyType.SELL];
+export const tabs = [
+  { title: "Rent", value: TransactionType.RENT },
+  { title: "Buy", value: TransactionType.BUY },
+  { title: "Sell", value: TransactionType.SELL },
+];

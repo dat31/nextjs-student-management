@@ -25,7 +25,7 @@ export function upload(fileName: string, buffer: ArrayBuffer) {
     new PutObjectCommand({
       Bucket: process.env.S3_BUCKET,
       Key: fileName,
-      Body: buffer as any,
+      Body: buffer as Buffer,
     })
   );
 }

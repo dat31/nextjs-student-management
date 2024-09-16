@@ -20,7 +20,7 @@ export default function SectionWrapper({
         {children}
         <div className="mt-12 flex justify-center">
           <Link
-            className="text-center w-full sm:w-auto bg-black py-4 px-8 text-[#ffffff] text-base font-bold leading-[150%]"
+            className="text-center w-full sm:w-auto bg-primary py-4 px-8 text-secondary text-base font-bold leading-[150%]"
             href={"/property"}
           >
             Browse more properties

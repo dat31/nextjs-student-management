@@ -1,14 +1,14 @@
-import PropertyListSkeleton from "../../ui/landing/property-listing-section/property-list-sekeleton";
-import Layout from "../../ui/layout";
-import Filter from "../../ui/property/filter";
+import { Suspense } from "react";
+import PropertyListSkeleton from "@/app/ui/landing/property-listing-section/property-list-sekeleton";
+import Filter from "@/app/ui/property/filter";
 
 export default function Loading() {
   return (
-    <div className="bg-gradient-to-b from-[#ffffff] to-primary-light-3">
-      <Layout>
+    <>
+      <Suspense>
         <Filter />
-        <PropertyListSkeleton />
-      </Layout>
-    </div>
+      </Suspense>
+      <PropertyListSkeleton />
+    </>
   );
 }

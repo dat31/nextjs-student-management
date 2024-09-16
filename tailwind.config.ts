@@ -39,7 +39,6 @@ const config: Config = {
         "13": "repeat(13, minmax(0, 1fr))",
       },
       colors: {
-        black: "#000929",
         white: "#e0def7",
         "primary-light": "#F7F7FD",
         "primary-light-2": "#E0DEF7",

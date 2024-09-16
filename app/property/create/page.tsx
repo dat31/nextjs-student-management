@@ -1,11 +1,13 @@
+import Layout from "@/app/ui/layout/layout";
 import CreateForm from "@/app/ui/property/create";
 
-export default async function PropertyPage() {
+export default async function CreatePropertyPage() {
   return (
-    <div className="bg-gradient-to-b to-primary-light-2">
-      <div className="container mx-auto py-22">
-        <CreateForm />
-      </div>
-    </div>
+    <Layout
+      headline="Create property"
+      description="Easily sell your property in few steps"
+    >
+      <CreateForm />
+    </Layout>
   );
 }

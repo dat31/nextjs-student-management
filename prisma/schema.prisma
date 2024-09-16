@@ -62,6 +62,7 @@ model VerificationToken {
 model Property {
   id          String     @id @default(cuid())
   type        PropertyType
+  transactionType TransactionType
   width       Int
   height      Int
   noBeds      Int
@@ -69,14 +70,21 @@ model Property {
   published   Boolean    @default(false)
   address     String
   name        String
-  price       Int
-  contentUrl  String
+  price       Decimal
+  contentUrl  String?
   imageUrl    String
   thumbnailUrl String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   creator     User       @relation(fields: [creatorId], references: [id])
   creatorId   String
+  interiors   String[]   @default([])
+  waterCharge Decimal    @default(0)
+  electricCharge Decimal @default(0)
+  internetCharge Decimal @default(0)
+  otherCharge    Decimal @default(0)
+  parkingSlots   Int
+  petFriendly    Boolean @default(false)
 
   @@map("property")
 }
@@ -85,4 +93,10 @@ enum PropertyType {
   APARTMENT
   REAL_ESTATE
   HOTEL
+}
+
+enum TransactionType {
+  RENT
+  BUY
+  SELL
 }

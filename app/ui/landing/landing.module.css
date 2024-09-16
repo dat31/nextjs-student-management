@@ -1,30 +1,6 @@
 .slide {
   min-width: 0;
   transform: translate3d(0, 0, 0);
-  flex: 0 0 66%;
-
-  @media screen(1.5xl) {
-    flex: 0 0 536px;
-  }
-}
-.slide:nth-child(1) {
-  @apply bg-secondary text-[#ffffff];
-}
-.slide:nth-child(2) {
-  @apply bg-[#ffffff];
-}
-.slide:nth-child(3) {
-  @apply bg-primary;
-}
-
-.property-item {
-  min-width: 0;
-  transform: translate3d(0, 0, 0);
-  flex: 0 0 300px;
-
-  @media screen(lg) {
-    min-width: unset;
-    transform: unset;
-    flex: unset;
-  }
+  flex: 0 0 536px;
+  @apply bg-white;
 }

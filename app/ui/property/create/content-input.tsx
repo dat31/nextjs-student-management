@@ -15,18 +15,21 @@ import {
 } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
 import { ForwardedRef } from "react";
+import { ControllerRenderProps } from "react-hook-form";
 
 type Props = {
   ref: ForwardedRef<MDXEditorMethods>;
-};
+  onBlur: (e: FocusEvent) => void;
+} & Pick<ControllerRenderProps, "value">;
 
-export default function ContentInput({ ref }: Props) {
+export default function ContentInput({ ref, onBlur, value }: Props) {
   return (
     <>
       <MDXEditor
+        onBlur={onBlur}
         ref={ref}
         contentEditableClassName="border border-input mt-4 h-104 overflow-y-scroll"
-        markdown="Content goes here..."
+        markdown={value}
         plugins={[
           toolbarPlugin({
             toolbarContents() {

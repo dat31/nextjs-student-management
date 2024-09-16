@@ -17,9 +17,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ICreateProperty } from "@/app/lib/schemas";
-import { PropertyType } from "@prisma/client";
+import { TransactionType } from "@prisma/client";
+import clsx from "clsx";
 
-export default function PropertyTypeSelection({
+export default function TransactionTypeSelection({
   form,
   className,
 }: {
@@ -29,22 +30,25 @@ export default function PropertyTypeSelection({
   return (
     <FormField
       control={form.control}
-      name="type"
+      name="transactionType"
       render={({ field }) => (
         <FormItem id="type" className={className}>
-          <FormLabel>Type</FormLabel>
-          <Select onValueChange={field.onChange} value={field.value}>
-            <FormControl className="shadow-none">
-              <SelectTrigger>
-                <SelectValue placeholder="Select a property type" />
+          <FormLabel>Transaction type</FormLabel>
+          <Select
+            name="transactionType"
+            onValueChange={field.onChange}
+            value={field.value}
+          >
+            <FormControl className="shadow-none ">
+              <SelectTrigger
+                className={clsx(!field.value && "text-muted-foreground")}
+              >
+                <SelectValue placeholder="Select a transaction type" />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              <SelectItem value={PropertyType.APARTMENT}>Apartment</SelectItem>
-              <SelectItem value={PropertyType.HOTEL}>Hotel</SelectItem>
-              <SelectItem value={PropertyType.REAL_ESTATE}>
-                Real estate
-              </SelectItem>
+              <SelectItem value={TransactionType.RENT}>Rent</SelectItem>
+              <SelectItem value={TransactionType.SELL}>Sell</SelectItem>
             </SelectContent>
           </Select>
           <FormMessage />

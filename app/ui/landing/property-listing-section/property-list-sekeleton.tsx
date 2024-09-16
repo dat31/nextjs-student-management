@@ -1,5 +1,5 @@
-import styles from "../landing.module.css";
 import PropertyListMobile from "./property-listing-mobile";
+import "./property-item.css";
 
 export default function PropertyListSkeleton() {
   return (
@@ -20,10 +20,10 @@ export default function PropertyListSkeleton() {
 
 function PropertyItemSkeleton() {
   return (
-    <div
-      className={"bg-[#ffffff] dark:bg-neutral-50 skeleton rounded-none ".concat(
-        styles["property-item"]
-      )}
+    <article
+      className={
+        "bg-[#ffffff] dark:bg-neutral-50 skeleton rounded-none property-item"
+      }
     >
       <div className="w-full h-50 bg-primary-light-3 flex justify-center items-center">
         <svg
@@ -51,6 +51,6 @@ function PropertyItemSkeleton() {
           <div className="w-12 h-5 bg-primary-light-3"></div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

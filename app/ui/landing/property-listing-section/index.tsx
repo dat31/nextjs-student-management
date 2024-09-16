@@ -1,12 +1,12 @@
-import { PropertyType } from "@/app/lib/definitions";
 import SectionWrapper from "./section-wrapper";
 import { Suspense } from "react";
 import PropertyList from "./property-list";
 import PropertyListSkeleton from "./property-list-sekeleton";
 import { headers } from "next/headers";
+import { PropertyType } from "@prisma/client";
 
 export default function PropertyListingSection({
-  type = PropertyType.RENT,
+  type = PropertyType.APARTMENT,
 }: {
   type: PropertyType;
 }) {

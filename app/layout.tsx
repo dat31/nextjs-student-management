@@ -2,9 +2,10 @@ import "@/app/ui/global.css";
 
 import { jakarta } from "@/app/ui/fonts";
 import { Metadata } from "next";
-import Header from "./ui/header";
+import Header from "./ui/layout/header";
 import NextAuthProvider from "./ui/next-auth-provider";
-import Footer from "./ui/footer";
+import Footer from "./ui/layout/footer";
+// import { ThemeProvider } from "@/components/ui/theme-provider";
 
 export default function RootLayout({
   children,
@@ -12,13 +13,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${jakarta.className} antialiased`}>
+    <html suppressHydrationWarning lang="en">
+      <body
+        className={`${jakarta.className} antialiased min-h-screen flex flex-col`}
+      >
+        {/* <ThemeProvider attribute="class" defaultTheme="system"> */}
         <NextAuthProvider>
           <Header />
           {children}
           <Footer />
         </NextAuthProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );

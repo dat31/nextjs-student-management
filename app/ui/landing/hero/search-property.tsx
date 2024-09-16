@@ -3,8 +3,6 @@
 import { tabs } from "@/app/lib/hooks/usePropertyTab";
 import { CalendarIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
-import "./hero.css";
-import { PropertyType } from "@/app/lib/definitions";
 import { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { formatDateToLocal } from "@/app/lib/utils";
@@ -15,9 +13,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { TransactionType } from "@prisma/client";
 
 export default function SearchProperty() {
-  const [activeTab, setActiveTab] = useState(PropertyType.RENT);
+  const [activeTab, setActiveTab] = useState<TransactionType>(
+    TransactionType.RENT
+  );
   const [date, setDate] = useState<Date | undefined>();
 
   return (
@@ -25,10 +26,10 @@ export default function SearchProperty() {
       <div className="flex sm:inline-flex bg-[#ffffff] justify-stretch w-full sm:w-[297px]">
         {tabs.map((tab) => (
           <TabItem
-            isActive={tab === activeTab}
-            key={tab}
-            title={tab}
-            onClick={() => setActiveTab(tab)}
+            isActive={tab.value === activeTab}
+            key={tab.value}
+            title={tab.title}
+            onClick={() => setActiveTab(tab.value)}
           />
         ))}
       </div>
@@ -76,6 +77,7 @@ export default function SearchProperty() {
         </div>
         <div className="h-10 w-px bg-neutral-100" />
         <button
+          aria-label="Search property"
           type="submit"
           className="bg-primary text-[#ffffff] px-8 py-4 font-bold text-base"
         >
@@ -86,8 +88,19 @@ export default function SearchProperty() {
         action={browserMoreProperties}
         className="md:hidden p-4 flex gap-4 bg-[#ffffff]"
       >
-        <input className="flex-grow" name="address" defaultValue={"Hoa Xuan"} />
-        <button className="bg-primary h-12 w-12 flex items-center justify-center">
+        <label htmlFor="address" className="hidden">
+          Address
+        </label>
+        <input
+          className="flex-grow border-none border-transparent focus:border-transparent focus:ring-0 focus:outline-none"
+          id="address"
+          name="address"
+          defaultValue={"Hoa Xuan"}
+        />
+        <button
+          aria-label="Search property"
+          className="bg-primary h-12 w-12 flex items-center justify-center"
+        >
           <MagnifyingGlassIcon width={20} height={20} color="#ffffff" />
         </button>
       </form>

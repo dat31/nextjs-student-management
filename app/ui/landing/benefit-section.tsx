@@ -5,6 +5,7 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import Link from "next/link";
 import { ReactElement } from "react";
 
 type Benefit = {
@@ -48,13 +49,16 @@ export default function BenefitsSection() {
           <p className="font-bold text-3xl mb-4 leading-[125%] tracking-[-1px]">
             The new way to find your new home
           </p>
-          <p className="font-medium mb-6 text-base  leading-[160%]">
+          <p className="font-medium mb-8 text-base  leading-[160%]">
             Find your dream place to live in with more than 10k+ properties
             listed.
           </p>
-          <button className="py-2.5 px-4 bg-black  text-[#ffffff]  text-sm font-bold leading-[140%]">
+          <Link
+            className="py-2.5 bg-primary text-secondary px-4 text-sm font-bold leading-[140%]"
+            href={"/property"}
+          >
             Browse Properties
-          </button>
+          </Link>
         </div>
 
         <div className="xl:w-104 xl:pl-14 md:mt-auto overflow-hidden">

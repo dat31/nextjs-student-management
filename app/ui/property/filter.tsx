@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Property } from "@prisma/client";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import PropertyTypeSelection from "./property-type-selection";
+import PropertyTypeSelection from "./create/property-type-selection";
 
 export default function Filter() {
   const searchParams = useSearchParams();

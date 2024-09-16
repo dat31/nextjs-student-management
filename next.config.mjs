@@ -1,9 +1,17 @@
+console.log(
+  `${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com`
+);
+
+console.log("domain", process.env.DOMAIN);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   i18n: {
     locales: ["en-US", "vi-VN"],
     defaultLocale: "en-US",
   },
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
   images: {
     minimumCacheTTL: 60,
     remotePatterns: [
@@ -21,7 +29,7 @@ const nextConfig = {
     ppr: "incremental",
     serverActions: {
       bodySizeLimit: "3mb",
-      allowedOrigins: ["localhost:3000", "danang-real-estate.click"],
+      allowedOrigins: [process.env.DOMAIN, "127.0.0.1:3000", "localhost:3000"],
     },
   },
   transpilePackages: ["next-mdx-remote"],

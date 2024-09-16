@@ -1,7 +1,6 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
-import styles from "./landing.module.css";
 import { HomeIcon, PaperClipIcon, PlayIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { Fragment, ReactElement } from "react";
@@ -45,7 +44,7 @@ export default function ForTenantsAndLandlordsSection() {
   return (
     <section className="flex gap-16 flex-col py-25 pr-0">
       <div className="flex flex-col text-center md:text-left lg:flex-row justify-between container mx-auto gap-6 lg:gap-0">
-        <div className="font-bold  text-3xl lg:text-4.5xl leading-[140%] w-full lg:w-[444px] lg:h-[112px]">
+        <div className="font-bold text-3xl lg:text-4.5xl leading-[140%] w-full lg:w-[444px] lg:h-[112px]">
           <span>We make it easy for</span>{" "}
           <span className="text-primary">tenants</span> <span>and</span>{" "}
           <span className="text-primary">landlords.</span>
@@ -83,35 +82,28 @@ export default function ForTenantsAndLandlordsSection() {
   );
 }
 
-function FeatureItem({
-  index,
-  title,
-  content,
-  icon,
-}: { index: number } & Feature) {
+function FeatureItem({ title, content, icon }: { index: number } & Feature) {
   return (
     <div
-      className={"p-8 flex flex-col md:flex-row gap-6 cursor-pointer ".concat(
-        styles.slide
-      )}
+      className={"p-8 flex flex-col md:flex-row gap-6 cursor-pointer slide bg-white".concat()}
     >
+      <style jsx>
+        {`
+          .slide {
+            min-width: 0;
+            transform: translate3d(0, 0, 0);
+            flex: 0 0 536px;
+          }
+        `}
+      </style>
       <div
         className={clsx(
-          "w-16 h-16 p-4 rounded-full icon-wrapper flex-shrink-0 ",
-          {
-            "bg-secondary-dark": index === 0,
-            "bg-primary-light-3 text-primary": index === 1,
-            "bg-[#ffffff] text-primary": index === 2,
-          }
+          "w-16 h-16 p-4 rounded-full icon-wrapper flex-shrink-0 bg-card "
         )}
       >
         {icon}
       </div>
-      <div
-        className={clsx({
-          "text-black": index === 1,
-        })}
-      >
+      <div>
         <p className="mb-4 font-bold text-2xl leading-[150%]">{title}</p>
         <p className="text-base leading-[160%]">{content}</p>
       </div>

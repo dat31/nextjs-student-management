@@ -8,7 +8,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import React from "react";
-import { cn } from "../lib/utils";
+import { cn } from "@/app/lib/utils";
 
 export default function Nav() {
   return (
